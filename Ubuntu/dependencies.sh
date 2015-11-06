@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo "--- Removing any pre-installed ffmpeg and x264"
-sudo apt-get -qq remove ffmpeg x264 libx264-dev
+# I don't know why they do this, since they reinstall below,
+# and this uninstalled ROS packages on one computer I did it on
+#echo "--- Removing any pre-installed ffmpeg and x264"
+#sudo apt-get -qq remove ffmpeg x264 libx264-dev
 
 function install_dependency {
     echo "--- Installing dependency: $1"
@@ -39,5 +41,7 @@ install_dependency libvorbis-dev
 install_dependency libxvidcore-dev
 install_dependency x264
 install_dependency v4l-utils
+# libav-tools is the replacement for the ffmpeg package
 #install_dependency ffmpeg
+install_dependency libav-tools
 install_dependency unzip
